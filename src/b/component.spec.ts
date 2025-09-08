@@ -16,4 +16,8 @@ describe('Profile', () => {
         component.user = <User>{ isAdmin: false };
         expect(component.isAdmin).toBeFalsy();
     });
+
+    it('should return undefined when user is undefined', () => {
+        expect(component.isAdmin).toBeUndefined();
+    });
 });
