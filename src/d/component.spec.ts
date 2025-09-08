@@ -6,15 +6,16 @@ describe('Component', () => {
     let component: Component;
     beforeEach(() => {
         component = new Component();
-        component.setUser(mockData);
+        component.setUser(mockData());
     });
 
     it('should return age as undefined if no user', () => {
+        component.setUser(undefined);
         expect(component.age).toBeUndefined();
     });
 
     it('should correctly identify the user age', () => {
-        expect(component.age).toEqual(mockData.age);
+        expect(component.age).toEqual(mockData().age);
     });
 
     it('should increment the age of the user', () => {
@@ -40,4 +41,8 @@ describe('Component', () => {
             component.decrementAge();
         }).toThrow();
     });
+
+    function mockData() {
+        return <User>{ id: 'foo', name: 'bar', age: 40 };
+    }
 });
